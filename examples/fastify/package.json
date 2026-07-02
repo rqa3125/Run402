@@ -1,0 +1,23 @@
+{
+  "name": "@run402/example-fastify",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fastify example protected by Run402 (placeholder — no official adapter yet).",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo"
+  },
+  "dependencies": {
+    "fastify": "^5.2.0",
+    "run402": "workspace:*"
+  },
+  "devDependencies": {
+    "@run402/config": "workspace:*",
+    "@types/node": "^22.10.7",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

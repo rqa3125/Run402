@@ -1,0 +1,44 @@
+{
+  "name": "@run402/dashboard",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Run402 SaaS dashboard.",
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next .turbo"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^7.5.12",
+    "@hookform/resolvers": "^3.10.0",
+    "@run402/database": "workspace:*",
+    "@run402/env": "workspace:*",
+    "@run402/logging": "workspace:*",
+    "@run402/payments": "workspace:*",
+    "@run402/ui": "workspace:*",
+    "@run402/utils": "workspace:*",
+    "geist": "^1.7.2",
+    "lucide-react": "^0.471.1",
+    "next": "15.5.20",
+    "next-themes": "^0.4.4",
+    "posthog-js": "^1.203.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-hook-form": "^7.54.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@run402/config": "workspace:*",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  }
+}

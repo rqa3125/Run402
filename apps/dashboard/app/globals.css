@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Run402 design tokens (kept in sync with @run402/ui/globals.css). */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 40%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 92%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 7%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 96%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 58%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 0% 96%;
+    --primary-foreground: 0 0% 9%;
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 62% 44%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 83%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Syntax highlighting tokens for @run402/ui CodeBlock */
+@layer components {
+  .tok-kw {
+    color: #a855f7;
+  }
+  .tok-str {
+    color: #16a34a;
+  }
+  .tok-num {
+    color: #ea580c;
+  }
+  .tok-type {
+    color: #2563eb;
+  }
+  .tok-fn {
+    color: #0891b2;
+  }
+  .tok-punc {
+    color: hsl(var(--muted-foreground));
+  }
+  .tok-comment {
+    color: hsl(var(--muted-foreground));
+    font-style: italic;
+  }
+  .dark .tok-kw {
+    color: #c084fc;
+  }
+  .dark .tok-str {
+    color: #4ade80;
+  }
+  .dark .tok-num {
+    color: #fb923c;
+  }
+  .dark .tok-type {
+    color: #60a5fa;
+  }
+  .dark .tok-fn {
+    color: #22d3ee;
+  }
+}
