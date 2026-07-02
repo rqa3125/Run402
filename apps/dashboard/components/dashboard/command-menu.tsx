@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import {
   BookOpen,
   CreditCard,
+  Database,
   FlaskConical,
   FolderKanban,
   LayoutDashboard,
@@ -87,6 +88,7 @@ export function CommandMenu() {
       { group: "Navigation", label: "Overview", icon: LayoutDashboard, action: go("/dashboard") },
       { group: "Navigation", label: "Projects", icon: FolderKanban, action: go("/projects") },
       { group: "Navigation", label: "Playground", icon: FlaskConical, action: go("/playground") },
+      { group: "Navigation", label: "API Explorer", icon: Database, action: go("/explorer") },
       { group: "Navigation", label: "Billing", icon: CreditCard, action: go("/billing") },
       { group: "Navigation", label: "Settings", icon: Settings, action: go("/settings") },
       { group: "Actions", label: "Create project", icon: Plus, action: go("/projects") },

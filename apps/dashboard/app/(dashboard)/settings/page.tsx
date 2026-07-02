@@ -12,6 +12,7 @@ import {
 } from "@run402/ui";
 import { PageHeader } from "@/components/dashboard/page-header";
 import { ThemePreference } from "@/components/settings/theme-preference";
+import { DeveloperPreferences } from "@/components/settings/developer-preferences";
 import { requireUser } from "@/lib/auth";
 
 export const metadata: Metadata = { title: "Settings" };
@@ -57,6 +58,18 @@ export default async function SettingsPage() {
           </CardHeader>
           <CardContent>
             <ThemePreference />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Developer preferences</CardTitle>
+            <CardDescription>
+              Timezone, notifications, and API / CLI defaults.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <DeveloperPreferences />
           </CardContent>
         </Card>
 

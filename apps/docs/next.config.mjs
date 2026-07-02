@@ -4,5 +4,8 @@ const nextConfig = {
   poweredByHeader: false,
   eslint: { ignoreDuringBuilds: true },
   transpilePackages: ["@run402/ui"],
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
 };
 export default nextConfig;

@@ -1,0 +1,11 @@
+{
+  "extends": "@run402/config/typescript/base.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": ["tests/**/*.ts", "playwright.config.ts"]
+}

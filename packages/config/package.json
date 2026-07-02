@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "description": "Shared TypeScript, ESLint, Prettier and Tailwind configuration for the Run402 monorepo.",
-  "files": ["typescript", "eslint", "prettier", "tailwind"],
+  "files": [
+    "typescript",
+    "eslint",
+    "prettier",
+    "tailwind"
+  ],
   "exports": {
     "./typescript/base.json": "./typescript/base.json",
     "./typescript/nextjs.json": "./typescript/nextjs.json",
@@ -27,5 +32,7 @@
     "prettier": "^3.4.2",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
-  }
+  },
+  "author": "Manoj",
+  "license": "MIT"
 }

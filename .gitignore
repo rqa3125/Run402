@@ -30,3 +30,8 @@ coverage/
 
 # drizzle
 packages/database/drizzle/meta/_journal.json.bak
+
+# playwright
+e2e/test-results/
+e2e/playwright-report/
+e2e/blob-report/
