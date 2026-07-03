@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   manifest: "/manifest.webmanifest",
+  other: {
+    "ory-verify": "orynth-30f8f1f4f38d487e8292604ad008fc92",
+  },
 };
 
 export const viewport: Viewport = {
