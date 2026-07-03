@@ -30,7 +30,7 @@ const pkStatus = keyStatus(publishableKey, "pk_");
 const skStatus = keyStatus(secretKey, "sk_");
 const clerkConfigured = pkStatus === "ok" && skStatus === "ok";
 const clerkStatusLine =
-  `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${pkStatus} · CLERK_SECRET_KEY: ${skStatus}`;
+  `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${pkStatus} | CLERK_SECRET_KEY: ${skStatus}`;
 
 if (!clerkConfigured) {
   console.error(
@@ -71,9 +71,9 @@ export default async function middleware(
       "Authentication is unavailable: Clerk keys are missing or malformed in " +
         "the server environment.\n" +
         clerkStatusLine +
-        "\n\nThe publishable key is baked in at build time — after setting it, " +
-        "redeploy with the build cache disabled. Remove any quotes/whitespace, " +
-        "and use a matched pair (both test, or both live).",
+        "\n\nThe publishable key is baked in at build time, so after setting it " +
+        "you must redeploy with the build cache disabled. Remove any " +
+        "quotes/whitespace, and use a matched pair (both test, or both live).",
       { status: 503, headers: { "content-type": "text/plain" } },
     );
   }
