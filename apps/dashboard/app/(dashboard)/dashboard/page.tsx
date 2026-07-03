@@ -14,12 +14,17 @@ import { StatCard } from "@/components/dashboard/stat-card";
 import { EmptyState } from "@/components/dashboard/empty-state";
 import { requireUser } from "@/lib/auth";
 import { listProjects } from "@/lib/data/projects";
+import { getUserStats } from "@/lib/data/stats";
+import { formatPrice } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Overview" };
 
 export default async function OverviewPage() {
   const user = await requireUser();
-  const projects = await listProjects(user.id);
+  const [projects, stats] = await Promise.all([
+    listProjects(user.id),
+    getUserStats(user.id),
+  ]);
   const firstName = user.name?.split(" ")[0] ?? "there";
 
   return (
@@ -30,10 +35,10 @@ export default async function OverviewPage() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard label="Total Projects" value={projects.length} icon={FolderKanban} />
-        <StatCard label="Revenue" icon={DollarSign} comingSoon />
-        <StatCard label="Requests" icon={Activity} comingSoon />
-        <StatCard label="Active APIs" icon={Plug} comingSoon />
+        <StatCard label="Total Projects" value={stats.projects} icon={FolderKanban} />
+        <StatCard label="Revenue" value={formatPrice(stats.revenueMicros)} icon={DollarSign} />
+        <StatCard label="Requests" value={stats.totalRequests} icon={Activity} />
+        <StatCard label="Active APIs" value={stats.activeEndpoints} icon={Plug} />
       </div>
 
       <div className="mt-6">

@@ -1,0 +1,15 @@
+{
+  "name": "run402-dev-db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Zero-install local Postgres for Run402 development (embedded-postgres).",
+  "scripts": {
+    "start": "node start.mjs"
+  },
+  "dependencies": {
+    "embedded-postgres": "^17.2.0-beta.11"
+  },
+  "author": "Manoj",
+  "license": "MIT"
+}

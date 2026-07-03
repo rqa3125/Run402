@@ -12,6 +12,7 @@ import { TestIntegration } from "@/components/projects/test-integration";
 import { requireUser } from "@/lib/auth";
 import { getProject } from "@/lib/data/projects";
 import { listEndpoints } from "@/lib/data/endpoints";
+import { getProjectStats } from "@/lib/data/stats";
 import { formatDate, formatPrice } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Project overview" };
@@ -23,9 +24,10 @@ export default async function ProjectOverviewPage({
 }) {
   const { id } = await params;
   const user = await requireUser();
-  const [project, endpoints] = await Promise.all([
+  const [project, endpoints, stats] = await Promise.all([
     getProject(user.id, id),
     listEndpoints(user.id, id),
+    getProjectStats(user.id, id),
   ]);
   const firstPath = endpoints[0]?.path ?? "/api/premium";
 
@@ -45,9 +47,13 @@ export default async function ProjectOverviewPage({
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total endpoints" value={endpoints.length} icon={Webhook} />
-        <StatCard label="Sandbox requests" value={0} icon={Zap} />
-        <StatCard label="Live requests" value={0} icon={Activity} />
-        <StatCard label="Revenue" icon={DollarSign} comingSoon />
+        <StatCard label="Requests" value={stats.totalRequests} icon={Zap} />
+        <StatCard label="Paid requests" value={stats.paidRequests} icon={Activity} />
+        <StatCard
+          label="Revenue"
+          value={formatPrice(stats.revenueMicros, project.currency)}
+          icon={DollarSign}
+        />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">

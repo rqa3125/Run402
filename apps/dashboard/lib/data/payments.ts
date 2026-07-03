@@ -19,24 +19,28 @@ export async function createPaymentForEndpoint(
 ): Promise<{ paymentId: string; checkoutUrl: string }> {
   const now = new Date();
 
-  const reusable = (
-    await db
-      .select({ id: schema.payment.id })
-      .from(schema.payment)
-      .where(
-        and(
-          eq(schema.payment.projectId, project.id),
-          eq(schema.payment.endpointId, endpoint.id),
-          eq(schema.payment.status, "pending"),
-          gt(schema.payment.expiresAt, now),
-        ),
-      )
-      .orderBy(desc(schema.payment.createdAt))
-      .limit(1)
-  )[0];
+  // Idempotency only applies to the mock provider, whose checkout URL is
+  // deterministic. Stripe mints a fresh session per attempt.
+  if (paymentProvider.name === "mock") {
+    const reusable = (
+      await db
+        .select({ id: schema.payment.id })
+        .from(schema.payment)
+        .where(
+          and(
+            eq(schema.payment.projectId, project.id),
+            eq(schema.payment.endpointId, endpoint.id),
+            eq(schema.payment.status, "pending"),
+            gt(schema.payment.expiresAt, now),
+          ),
+        )
+        .orderBy(desc(schema.payment.createdAt))
+        .limit(1)
+    )[0];
 
-  if (reusable) {
-    return { paymentId: reusable.id, checkoutUrl: checkoutUrlFor(reusable.id) };
+    if (reusable) {
+      return { paymentId: reusable.id, checkoutUrl: checkoutUrlFor(reusable.id) };
+    }
   }
 
   // Expire any stale pending payments for this endpoint (best-effort cleanup).
@@ -179,6 +183,22 @@ export async function markTokenUsed(token: string): Promise<void> {
     .update(schema.paymentToken)
     .set({ status: "used" })
     .where(eq(schema.paymentToken.token, token));
+}
+
+/**
+ * The valid token issued for a paid payment, if any. Used by the redirect
+ * (Stripe) flow: after checkout the client polls this with the payment id.
+ */
+export async function getTokenForPayment(paymentId: string): Promise<string | null> {
+  const rows = await db
+    .select({ token: schema.paymentToken.token, status: schema.paymentToken.status })
+    .from(schema.paymentToken)
+    .where(eq(schema.paymentToken.paymentId, paymentId))
+    .orderBy(desc(schema.paymentToken.createdAt))
+    .limit(1);
+  const row = rows[0];
+  if (!row || row.status !== "valid") return null;
+  return row.token;
 }
 
 export async function markTokenExpired(token: string): Promise<void> {

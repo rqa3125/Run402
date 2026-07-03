@@ -32,12 +32,27 @@ run402/
 
 ```bash
 pnpm install
-cp .env.example .env          # fill in DATABASE_URL + BETTER_AUTH_SECRET
+cp .env.example .env          # fill in DATABASE_URL + Clerk keys
 pnpm --filter @run402/database db:push   # apply schema to Postgres
 pnpm dev                       # runs every app via Turborepo
 ```
 
 Apps: web → `:3000`, dashboard → `:3001`, docs → `:3002`.
+
+### Run the full stack locally (zero external services)
+
+No Docker, no cloud account — an embedded Postgres boots from `tools/dev-db`:
+
+```bash
+node tools/dev-db/start.mjs &                 # Postgres 17 on :5432 (persistent)
+export DATABASE_URL=postgres://postgres:postgres@localhost:5432/run402
+pnpm --filter @run402/database db:push        # create tables
+pnpm --filter @run402/database db:seed        # demo project + endpoint + keys
+```
+
+`db:seed` prints a one-time `secretKey` (`sk_live_…`). Point the middleware or CLI
+at it (`RUN402_SECRET_KEY=…`) to drive a real 402 → pay → 200 flow against the
+mock provider — settlement, single-use tokens, and request logging are all live.
 
 ## Scripts
 
@@ -50,17 +65,23 @@ Apps: web → `:3000`, dashboard → `:3001`, docs → `:3002`.
 | `pnpm format` | Prettier write |
 | `pnpm db:generate` | Generate SQL migrations from schema |
 | `pnpm db:migrate` | Apply migrations |
+| `pnpm --filter @run402/database db:seed` | Seed a demo project + keys |
 
 > `SKIP_ENV_VALIDATION=1` bypasses env validation for CI/Docker builds where
 > secrets are injected at runtime.
 
 See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for the reasoning behind the design.
 
-## Not implemented yet (by design)
+## Payment providers
 
-- Payment business logic (`@run402/payments` defines the seams only)
-- The `run402` middleware runtime (scaffold + adapters only)
-- Metering / usage / API-key issuance logic
+- **`mock`** (default) — in-memory settlement, single-use tokens, idempotency.
+  Everything runs end-to-end with no external account.
+- **`stripe`** — real Stripe Checkout Sessions + webhook settlement. Code-complete
+  and env-gated: set `PAYMENTS_PROVIDER=stripe`, `STRIPE_SECRET_KEY`, and
+  `STRIPE_WEBHOOK_SECRET`. Falls back to `mock` when unset.
+
+The `run402` middleware runtime, token system, request logging, and revenue
+metering are fully implemented against both providers.
 
 ## Author & License
 

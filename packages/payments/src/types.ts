@@ -32,6 +32,14 @@ export interface CreatePaymentInput {
   expiresInMs?: number;
 }
 
+export interface WebhookEvent {
+  id: string;
+  type: string;
+  /** The provider payment id this event concerns, if any. */
+  paymentId?: string;
+  data: unknown;
+}
+
 export interface PaymentProvider {
   readonly name: ProviderName;
   /** Create a pending payment and return its hosted checkout URL. */
@@ -40,4 +48,9 @@ export interface PaymentProvider {
   verifyPayment(paymentId: string): Promise<Payment>;
   /** Refund a paid payment. */
   refund(paymentId: string): Promise<Payment>;
+  /**
+   * Verify + parse an incoming provider webhook (Stripe). Optional — the mock
+   * provider settles synchronously and has no webhooks.
+   */
+  verifyWebhook?(payload: string, signature: string): Promise<WebhookEvent>;
 }

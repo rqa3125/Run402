@@ -20,7 +20,10 @@ export const paymentProvider: PaymentProvider =
     provider:
       (process.env.PAYMENTS_PROVIDER as "mock" | "stripe" | undefined) ?? "mock",
     stripe: process.env.STRIPE_SECRET_KEY
-      ? { apiKey: process.env.STRIPE_SECRET_KEY }
+      ? {
+          apiKey: process.env.STRIPE_SECRET_KEY,
+          webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
+        }
       : undefined,
   });
 

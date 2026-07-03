@@ -7,6 +7,7 @@ const isPublicRoute = createRouteMatcher([
   // payment capability, not by a Clerk session.
   "/api/run402(.*)",
   "/mock-checkout(.*)",
+  "/api/health",
 ]);
 
 export default clerkMiddleware(async (auth, request) => {
