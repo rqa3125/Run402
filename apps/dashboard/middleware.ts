@@ -17,18 +17,29 @@ const isPublicRoute = createRouteMatcher([
 // readable reason and keep public routes alive instead of blanking the site.
 const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const secretKey = process.env.CLERK_SECRET_KEY;
-const clerkConfigured =
-  Boolean(publishableKey?.startsWith("pk_")) &&
-  Boolean(secretKey?.startsWith("sk_"));
+
+// Report presence/format per key (never the value) so a bad deploy is
+// self-diagnosing. "malformed" almost always means quotes or whitespace got
+// pasted into the value, or the wrong variable was used.
+function keyStatus(value: string | undefined, prefix: string): string {
+  if (!value) return "MISSING";
+  if (!value.startsWith(prefix)) return "MALFORMED (no " + prefix + " prefix)";
+  return "ok";
+}
+const pkStatus = keyStatus(publishableKey, "pk_");
+const skStatus = keyStatus(secretKey, "sk_");
+const clerkConfigured = pkStatus === "ok" && skStatus === "ok";
+const clerkStatusLine =
+  `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${pkStatus} · CLERK_SECRET_KEY: ${skStatus}`;
 
 if (!clerkConfigured) {
   console.error(
     "[middleware] Clerk is not configured correctly — auth is disabled. " +
-      `publishableKey=${publishableKey ? "present" : "MISSING"}, ` +
-      `secretKey=${secretKey ? "present" : "MISSING"}. ` +
-      "Set NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY (pk_…) and CLERK_SECRET_KEY (sk_…) " +
-      "as a matched pair from the SAME Clerk instance, then redeploy with the " +
-      "build cache disabled (the publishable key is baked in at build time).",
+      clerkStatusLine +
+      ". Fixes: (1) the publishable key is inlined at BUILD time — after " +
+      "setting it you MUST redeploy with build cache disabled; (2) paste values " +
+      "with no surrounding quotes or whitespace; (3) both keys must be a matched " +
+      "pair from the SAME Clerk instance (both test, or both live).",
   );
 }
 
@@ -58,7 +69,11 @@ export default async function middleware(
     if (isPublicRoute(request)) return NextResponse.next();
     return new NextResponse(
       "Authentication is unavailable: Clerk keys are missing or malformed in " +
-        "the server environment.",
+        "the server environment.\n" +
+        clerkStatusLine +
+        "\n\nThe publishable key is baked in at build time — after setting it, " +
+        "redeploy with the build cache disabled. Remove any quotes/whitespace, " +
+        "and use a matched pair (both test, or both live).",
       { status: 503, headers: { "content-type": "text/plain" } },
     );
   }
