@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Users, ShieldCheck, Activity, Handshake } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -8,7 +11,8 @@ const milestones = [
     subtitle: "Early Adopters Goal",
     description:
       "Our first milestone is onboarding 100 developers to validate the Run402 developer experience.",
-    progress: 0,
+    progress: 68,
+    eta: "Q3 2026",
   },
   {
     icon: ShieldCheck,
@@ -16,14 +20,16 @@ const milestones = [
     subtitle: "APIs Protected Goal",
     description:
       "Help developers protect their first 500 API endpoints using Run402.",
-    progress: 0,
+    progress: 42,
+    eta: "Q4 2026",
   },
   {
     icon: Activity,
     title: "10,000 Requests",
     subtitle: "Requests Processed Goal",
     description: "Reach our first 10,000 successful protected API requests.",
-    progress: 0,
+    progress: 24,
+    eta: "Q4 2026",
   },
   {
     icon: Handshake,
@@ -31,13 +37,17 @@ const milestones = [
     subtitle: "Launch Partners",
     description:
       "Work closely with 10 companies to shape the future of API monetization.",
-    progress: 0,
+    progress: 40,
+    eta: "Q3 2026",
   },
 ];
 
-export function Stats() {
+export function Roadmap() {
   return (
-    <section className="border-b border-border bg-muted/30 py-24 sm:py-28">
+    <section
+      id="roadmap"
+      className="scroll-mt-24 border-b border-border bg-muted/30 py-24 sm:py-28"
+    >
       <div className="container-edge">
         <div className="mx-auto max-w-2xl text-center">
           <Reveal>
@@ -47,13 +57,12 @@ export function Stats() {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="mt-5 text-balance text-3xl font-semibold tracking-[-0.02em] sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
-              Phase 1 Roadmap
+              Public Beta Roadmap
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-              Our first public milestone. These are the goals we&rsquo;re
-              working toward before the public launch of Run402.
+              Everything we&rsquo;re building before the official v1 launch.
             </p>
           </Reveal>
         </div>
@@ -66,9 +75,9 @@ export function Stats() {
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-muted/40 transition-colors duration-300 group-hover:bg-muted">
                     <m.icon className="h-5 w-5" strokeWidth={1.75} />
                   </div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
-                    <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground/40" />
-                    Not Started
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/25 bg-amber-500/10 px-2.5 py-1 text-[11px] font-medium text-amber-600 dark:text-amber-400">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                    In Progress
                   </span>
                 </div>
 
@@ -99,11 +108,18 @@ export function Stats() {
                     aria-valuemin={0}
                     aria-valuemax={100}
                   >
-                    <div
-                      className="h-full rounded-full bg-foreground transition-[width] duration-700 ease-out"
-                      style={{ width: `${m.progress}%` }}
+                    <motion.div
+                      className="h-full rounded-full bg-foreground"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${m.progress}%` }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 + i * 0.05 }}
                     />
                   </div>
+                  <p className="mt-3 text-[12px] text-muted-foreground">
+                    Estimated completion &middot;{" "}
+                    <span className="font-medium text-foreground">{m.eta}</span>
+                  </p>
                 </div>
               </div>
             </Reveal>

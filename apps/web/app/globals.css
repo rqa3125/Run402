@@ -158,6 +158,19 @@
 }
 
 @layer utilities {
+  /* Subtle "live" glow for Public Beta status dots. */
+  @keyframes beta-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 hsl(142 71% 45% / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 4px hsl(142 71% 45% / 0);
+    }
+  }
+  .animate-beta-glow {
+    animation: beta-glow 2.4s ease-in-out infinite;
+  }
   .text-balance {
     text-wrap: balance;
   }

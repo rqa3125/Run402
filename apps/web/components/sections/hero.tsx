@@ -13,7 +13,6 @@ import {
   Loader2,
   Lock,
   Terminal as TerminalIcon,
-  Star,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -581,12 +580,18 @@ export function Hero() {
             animate="show"
             variants={{ show: { transition: { staggerChildren: 0.11, delayChildren: 0.05 } } }}
           >
-            <motion.div variants={copyItem}>
+            <motion.div
+              variants={copyItem}
+              className="flex flex-wrap items-center gap-2"
+            >
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
                 <span className="flex h-4 w-4 items-center justify-center rounded-full bg-foreground text-[9px] font-bold text-background">
                   4
                 </span>
-                The HTTP 402 payments layer for APIs
+                API infrastructure for the next generation
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 backdrop-blur dark:text-emerald-400">
+                Launching in Public <span aria-hidden>🚀</span>
               </span>
             </motion.div>
 
@@ -638,9 +643,16 @@ export function Hero() {
               </Magnetic>
             </motion.div>
 
+            <motion.p
+              variants={copyItem}
+              className="mt-5 max-w-md text-[15px] leading-relaxed text-muted-foreground"
+            >
+              Join the first developers shaping the future of API monetization.
+            </motion.p>
+
             <motion.div
               variants={copyItem}
-              className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center"
+              className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <div className="group flex items-center justify-between gap-3 rounded-full border border-border bg-muted/40 py-2 pl-4 pr-2 font-mono text-sm transition-colors hover:border-foreground/20">
                 <span className="flex items-center gap-2 text-muted-foreground">
@@ -652,17 +664,13 @@ export function Hero() {
                 </span>
                 <CopyButton value="npm install run402" />
               </div>
-              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                <span className="flex">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <Star
-                      key={i}
-                      className="h-3.5 w-3.5 fill-foreground text-foreground"
-                    />
-                  ))}
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-beta-glow" />
+                <span className="font-medium text-foreground">Public Beta</span>
+                <span aria-hidden className="text-muted-foreground/50">
+                  •
                 </span>
-                <span className="font-medium text-foreground">18.4k</span>
-                <span>on GitHub</span>
+                <span>Early Access Open</span>
               </div>
             </motion.div>
           </motion.div>

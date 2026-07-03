@@ -9,8 +9,9 @@ const columns = [
     links: [
       { label: "Features", href: "/#features" },
       { label: "Pricing", href: "/pricing" },
+      { label: "Roadmap", href: "/#roadmap" },
       { label: "Changelog", href: "/changelog" },
-      { label: "Docs", href: "/docs" },
+      { label: "GitHub", href: site.github, external: true },
     ],
   },
   {
@@ -45,10 +46,16 @@ export function Footer() {
       <div className="container-edge py-16">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="max-w-xs">
-            <Logo />
+            <div className="flex items-center gap-2.5">
+              <Logo />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-emerald-600 dark:text-emerald-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-beta-glow" />
+                Public Beta
+              </span>
+            </div>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              The easiest way to monetize APIs. Install one package, wrap any
-              route, and start charging.
+              API infrastructure for the next generation. Built alongside early
+              developers — wrap any route and start charging.
             </p>
             <div className="mt-5 flex items-center gap-2">
               <Link
@@ -105,10 +112,12 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {site.name}, Inc. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. Building in Public since
+            2026.
           </p>
-          <p className="font-mono text-xs text-muted-foreground">
-            Monetize Any API in Under 2 Minutes.
+          <p className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-beta-glow" />
+            Public Beta
           </p>
         </div>
       </div>

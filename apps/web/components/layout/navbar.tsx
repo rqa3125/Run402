@@ -48,10 +48,17 @@ export function Navbar() {
           style={{ height }}
           className="container-edge flex items-center justify-between"
         >
-          <motion.div style={{ scale: logoScale }} className="origin-left">
+          <motion.div
+            style={{ scale: logoScale }}
+            className="flex origin-left items-center gap-2.5"
+          >
             <Link href="/" className="shrink-0" aria-label="Run402 home">
               <Logo />
             </Link>
+            <span className="hidden items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-emerald-600 dark:text-emerald-400 sm:inline-flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-beta-glow" />
+              Public Beta
+            </span>
           </motion.div>
 
           <div

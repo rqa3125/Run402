@@ -8,7 +8,7 @@ export const site = {
     process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "https://app.run402.dev",
   tagline: "Monetize Any API in Under 2 Minutes.",
   description:
-    "Run402 is the easiest way to monetize APIs. Install one package, wrap any route, and start charging. Stripe Checkout, billing, analytics, rate limiting — handled.",
+    "Run402 is API infrastructure for the next generation — now in Public Beta. Install one package, wrap any route, and start charging. Built in public alongside early developers.",
   github: "https://github.com/run402/run402",
   discord: "https://discord.gg/run402",
   twitter: "https://x.com/run402",

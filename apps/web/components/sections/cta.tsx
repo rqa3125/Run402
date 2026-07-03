@@ -23,8 +23,9 @@ export function CTA() {
               />
               <Reveal delay={0.15}>
                 <p className="mx-auto mt-5 max-w-md text-pretty text-lg text-background/70">
-                  Install Run402, protect a route, and accept your first payment
-                  in under two minutes.
+                  Production-focused and in Public Beta. Protect a route and get
+                  ready for your first production deployment — you&rsquo;re
+                  early.
                 </p>
               </Reveal>
 
