@@ -90,6 +90,14 @@ export function Navbar() {
               <span>K</span>
             </button>
             <ThemeToggle className="hidden sm:inline-flex" />
+            <Button
+              asChild
+              size="sm"
+              variant="ghost"
+              className="hidden sm:inline-flex"
+            >
+              <Link href={site.dashboardUrl}>Sign in</Link>
+            </Button>
             <Button asChild size="sm" className="hidden sm:inline-flex">
               <Link href="/docs">Get Started</Link>
             </Button>
@@ -124,6 +132,11 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
+              <Button asChild variant="ghost" className="mt-2 w-full">
+                <Link href={site.dashboardUrl} onClick={() => setOpen(false)}>
+                  Sign in
+                </Link>
+              </Button>
               <div className="mt-2 flex items-center gap-2">
                 <Button asChild className="flex-1">
                   <Link href="/docs" onClick={() => setOpen(false)}>

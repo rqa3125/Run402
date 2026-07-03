@@ -39,8 +39,8 @@ export function LegalPage({
           </div>
           <p className="mt-14 border-t border-border pt-8 text-sm text-muted-foreground">
             Questions about this policy? Email{" "}
-            <a href="mailto:legal@run402.com" className="text-foreground underline underline-offset-4">
-              legal@run402.com
+            <a href="mailto:legal@run402.dev" className="text-foreground underline underline-offset-4">
+              legal@run402.dev
             </a>
             .
           </p>

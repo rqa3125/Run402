@@ -47,7 +47,7 @@ export default function PrivacyPage() {
           heading: "Your rights",
           body: [
             "Depending on your region, you may have rights to access, correct, export, or delete your personal data.",
-            "Contact legal@run402.com to exercise any of these rights.",
+            "Contact legal@run402.dev to exercise any of these rights.",
           ],
         },
       ]}

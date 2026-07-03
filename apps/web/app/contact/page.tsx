@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const channels = [
-  { icon: Mail, title: "Email", body: "hello@run402.com", href: "mailto:hello@run402.com" },
+  { icon: Mail, title: "Email", body: "hello@run402.dev", href: "mailto:hello@run402.dev" },
   { icon: MessagesSquare, title: "Discord", body: "Join the community", href: site.discord },
   { icon: Github, title: "GitHub", body: "Issues & discussions", href: site.github },
   { icon: BookOpen, title: "Docs", body: "Read the guides", href: "/docs" },

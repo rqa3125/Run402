@@ -1,7 +1,11 @@
 export const site = {
   name: "Run402",
-  domain: "run402.com",
-  url: "https://run402.com",
+  domain: "run402.dev",
+  url: "https://run402.dev",
+  // The authenticated dashboard lives on its own subdomain. Overridable per
+  // environment (e.g. preview deploys) via NEXT_PUBLIC_DASHBOARD_URL.
+  dashboardUrl:
+    process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "https://app.run402.dev",
   tagline: "Monetize Any API in Under 2 Minutes.",
   description:
     "Run402 is the easiest way to monetize APIs. Install one package, wrap any route, and start charging. Stripe Checkout, billing, analytics, rate limiting — handled.",
