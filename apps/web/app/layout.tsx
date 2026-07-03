@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { CommandMenu } from "@/components/command-menu";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { SocialProof } from "@/components/ui/social-proof";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -88,6 +89,7 @@ export default function RootLayout({
           <main id="main">{children}</main>
           <Footer />
           <CommandMenu />
+          <SocialProof />
         </ThemeProvider>
       </body>
     </html>
