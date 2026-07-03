@@ -8,6 +8,7 @@ import { Footer } from "@/components/layout/footer";
 import { CommandMenu } from "@/components/command-menu";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { SocialProof } from "@/components/ui/social-proof";
+import { ExitIntent } from "@/components/ui/exit-intent";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -90,6 +91,7 @@ export default function RootLayout({
           <Footer />
           <CommandMenu />
           <SocialProof />
+          <ExitIntent />
         </ThemeProvider>
       </body>
     </html>
