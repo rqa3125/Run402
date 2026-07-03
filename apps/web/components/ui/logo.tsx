@@ -2,26 +2,20 @@ import { cn } from "@/lib/utils";
 
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      fill="none"
-      className={cn("h-7 w-7", className)}
-      aria-hidden="true"
+    <span
+      className={cn(
+        "inline-block h-7 w-7 shrink-0 overflow-hidden rounded-[22%] ring-1 ring-black/5 dark:ring-white/10",
+        className
+      )}
     >
-      <rect
-        x="1"
-        y="1"
-        width="30"
-        height="30"
-        rx="9"
-        className="fill-foreground"
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/logo-mark.png"
+        alt=""
+        aria-hidden="true"
+        className="h-full w-full object-cover"
       />
-      <path
-        d="M11 22V10h5.4c2.3 0 3.9 1.4 3.9 3.6 0 1.7-1 2.9-2.6 3.4L21 22h-3l-2-4.7h-2.2V22H11Z"
-        className="fill-background"
-      />
-      <path d="M13.8 15.2h2.2c.9 0 1.5-.5 1.5-1.4s-.6-1.4-1.5-1.4h-2.2v2.8Z" className="fill-foreground" />
-    </svg>
+    </span>
   );
 }
 

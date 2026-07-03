@@ -24,22 +24,14 @@ export default function OGImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div
-            style={{
-              width: 64,
-              height: 64,
-              borderRadius: 18,
-              background: "#111111",
-              color: "#fff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 40,
-              fontWeight: 700,
-            }}
-          >
-            R
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${site.url}/logo-mark.png`}
+            width={64}
+            height={64}
+            style={{ width: 64, height: 64, borderRadius: 14 }}
+            alt=""
+          />
           <div style={{ fontSize: 34, fontWeight: 600, color: "#111" }}>
             Run402
           </div>
