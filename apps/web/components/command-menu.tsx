@@ -11,13 +11,11 @@ import {
   Newspaper,
   GitBranch,
   Mail,
-  Github,
   Moon,
   Sun,
   CornerDownLeft,
 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Item = {
@@ -55,7 +53,6 @@ export function CommandMenu() {
       { group: "Navigation", label: "Blog", icon: Newspaper, action: go("/blog") },
       { group: "Navigation", label: "Changelog", icon: GitBranch, action: go("/changelog") },
       { group: "Navigation", label: "Contact", icon: Mail, action: go("/contact") },
-      { group: "Links", label: "GitHub Repository", icon: Github, action: go(site.github), keywords: "source code" },
       {
         group: "Theme",
         label: "Toggle dark mode",

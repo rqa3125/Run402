@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Mail, MessagesSquare, Github, BookOpen } from "lucide-react";
+import { Mail, MessagesSquare, BookOpen } from "lucide-react";
 import { PageHeader } from "@/components/layout/page-header";
 import { ContactForm } from "@/components/sections/contact-form";
 import { Reveal } from "@/components/ui/reveal";
@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 const channels = [
   { icon: Mail, title: "Email", body: "hello@run402.dev", href: "mailto:hello@run402.dev" },
   { icon: MessagesSquare, title: "Discord", body: "Join the community", href: site.discord },
-  { icon: Github, title: "GitHub", body: "Issues & discussions", href: site.github },
   { icon: BookOpen, title: "Docs", body: "Read the guides", href: "/docs" },
 ];
 

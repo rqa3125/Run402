@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
 const badges = ["IIT (ISM) Dhanbad", "Bottomline Technologies", "Bengaluru"];
@@ -18,12 +18,11 @@ function XIcon({ className }: { className?: string }) {
 const socials = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/manojpaliwal",
+    href: "https://www.linkedin.com/in/manoj-paliwal-2078b116a/",
     icon: Linkedin,
     active: true,
   },
-  { label: "GitHub", href: "#", icon: Github, active: false },
-  { label: "X", href: "#", icon: XIcon, active: false },
+  { label: "X", href: "https://x.com/ManojPaliwals", icon: XIcon, active: true },
   { label: "Email", href: "#", icon: Mail, active: false },
 ];
 

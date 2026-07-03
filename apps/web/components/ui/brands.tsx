@@ -92,6 +92,5 @@ export const brands: Brand[] = [
   { name: "Cloudflare", Icon: CloudflareIcon },
   { name: "Supabase", Icon: SupabaseIcon },
   { name: "Docker", Icon: DockerIcon },
-  { name: "GitHub", Icon: GitHubIcon },
   { name: "Vercel", Icon: VercelIcon },
 ];

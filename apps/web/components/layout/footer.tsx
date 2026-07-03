@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, MessagesSquare } from "lucide-react";
+import { MessagesSquare } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { site } from "@/lib/site";
 
@@ -11,7 +11,6 @@ const columns = [
       { label: "Pricing", href: "/pricing" },
       { label: "Roadmap", href: "/#roadmap" },
       { label: "Changelog", href: "/changelog" },
-      { label: "GitHub", href: site.github, external: true },
     ],
   },
   {
@@ -19,7 +18,6 @@ const columns = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
-      { label: "GitHub", href: site.github, external: true },
       { label: "Discord", href: site.discord, external: true },
     ],
   },
@@ -58,15 +56,6 @@ export function Footer() {
               developers — wrap any route and start charging.
             </p>
             <div className="mt-5 flex items-center gap-2">
-              <Link
-                href={site.github}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Github className="h-4 w-4" />
-              </Link>
               <Link
                 href={site.discord}
                 target="_blank"
