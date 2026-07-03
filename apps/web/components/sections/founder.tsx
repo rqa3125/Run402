@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Linkedin, Mail } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
-const badges = ["IIT (ISM) Dhanbad", "Bottomline Technologies", "Bengaluru"];
+const badges = ["IIT (ISM) Dhanbad", "Bengaluru"];
 
 function XIcon({ className }: { className?: string }) {
   return (
