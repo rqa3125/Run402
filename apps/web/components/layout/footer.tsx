@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { MessagesSquare } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { site } from "@/lib/site";
 
@@ -18,7 +17,6 @@ const columns = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/contact" },
-      { label: "Discord", href: site.discord, external: true },
     ],
   },
   {
@@ -57,16 +55,7 @@ export function Footer() {
             </p>
             <div className="mt-5 flex items-center gap-2">
               <Link
-                href={site.discord}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Discord"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <MessagesSquare className="h-4 w-4" />
-              </Link>
-              <Link
-                href={site.twitter}
+                href="https://x.com/ManojPaliwals"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="X"
@@ -75,6 +64,21 @@ export function Footer() {
                 <XIcon className="h-3.5 w-3.5" />
               </Link>
             </div>
+
+            <a
+              href="https://www.producthunt.com/products/run402?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-run402"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1188431&theme=light&t=1783372090513"
+                alt="Run402 - Monetize any API with one line of code. | Product Hunt"
+                width={250}
+                height={54}
+              />
+            </a>
           </div>
 
           {columns.map((col) => (
