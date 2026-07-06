@@ -559,6 +559,7 @@ const copyItem = {
 
 export function Hero() {
   const { phase, jumpTo } = useDirector();
+  const contractAddress = "JC42NKZnR4fj1ot2zDftRmW6tLZyJnT1BqAxqofBAory";
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 sm:pt-32">
@@ -671,6 +672,21 @@ export function Hero() {
                   •
                 </span>
                 <span>Early Access Open</span>
+              </div>
+            </motion.div>
+
+            <motion.div variants={copyItem} className="mt-3">
+              <div
+                title={contractAddress}
+                className="group inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-muted/40 py-1.5 pl-3 pr-1.5 transition-colors hover:border-foreground/20"
+              >
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/70">
+                  CA
+                </span>
+                <span className="truncate font-mono text-xs text-foreground/90">
+                  {contractAddress.slice(0, 6)}…{contractAddress.slice(-6)}
+                </span>
+                <CopyButton value={contractAddress} />
               </div>
             </motion.div>
           </motion.div>
